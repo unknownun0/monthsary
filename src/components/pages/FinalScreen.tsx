@@ -17,6 +17,15 @@ export default function FinalScreen({ onPrev, selectedDate, selectedDateType }: 
   );
   const mailSubject = encodeURIComponent("Our Monthsary Date Plans! 💖");
 
+  const handleSubmit = async () => {
+    await fetch("/api/date-plans", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ date: selectedDate, dateType: selectedDateType }),
+    });
+    window.open(`mailto:earljohngomez66@gmail.com?subject=${mailSubject}&body=${mailBody}`, "_blank");
+  };
+
   return (
     <motion.div className="min-h-screen flex items-center justify-center p-4 sm:p-8"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -70,15 +79,15 @@ export default function FinalScreen({ onPrev, selectedDate, selectedDateType }: 
         </motion.div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <motion.a
-            href={`mailto:earljohngomez66@gmail.com?subject=${mailSubject}&body=${mailBody}`}
-            className="px-6 py-3 rounded-full text-white handwritten text-lg inline-block"
+          <motion.button
+            className="px-6 py-3 rounded-full text-white handwritten text-lg"
             style={{ background: "linear-gradient(135deg, #D96C8A, #B54B6A)" }}
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+            onClick={handleSubmit}
           >
             See Our Date Details
-          </motion.a>
+          </motion.button>
           <motion.button className="px-6 py-3 rounded-full border-2 text-brown handwritten text-lg"
             style={{ borderColor: "#D6B36A" }}
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
