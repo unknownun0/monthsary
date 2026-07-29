@@ -1,0 +1,8 @@
+Place your background music file here named "romantic.mp3"
+
+The music player in the app looks for: /music/romantic.mp3
+
+Recommended: A soft romantic instrumental piano track.
+You can download royalty-free music from:
+- https://pixabay.com/music/
+- https://www.chosic.com/free-music/romantic/
