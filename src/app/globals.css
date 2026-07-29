@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --bg-cream: #F9F5EF;
+  --paper: #FFFDF9;
+  --brown: #7A5C4D;
+  --soft-pink: #F8C8DC;
+  --rose: #D96C8A;
+  --gold: #D6B36A;
+  --dark-text: #3E3027;
+  --accent: #B54B6A;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #F9F5EF;
+  color: #3E3027;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.scrapbook-paper {
+  background: #FFFDF9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.handwritten { font-family: "Caveat", cursive; }
+.handwritten-serif { font-family: "Dancing Script", cursive; }
+.handwritten-elegant { font-family: "Allura", cursive; }
+
+.polaroid-frame {
+  background: white;
+  padding: 8px 8px 40px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #D96C8A;
+}
+
+.heart-divider::before, .heart-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D96C8A, transparent);
+}
+
+.coffee-stain {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 119, 101, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F9F5EF; }
+::-webkit-scrollbar-thumb { background: #D6B36A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #7A5C4D; }
