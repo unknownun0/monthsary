@@ -1,13 +1,12 @@
 ﻿'use client';
 
 import { motion } from 'framer-motion';
-import Envelope from '../shared/Envelope';
 
 const envelopes = [
-  { title: "Sweet Message", content: "You are the best thing that has ever happened to me. Every day with you feels like a dream I never want to wake up from. I love you more than words can ever express.", type: "message" as const },
-  { title: "Favorite Picture", content: "Our favorite memory together", type: "message" as const },
-  { title: "Voice Message", content: "A special voice message just for you", type: "voice" as const },
-  { title: "Secret Surprise", content: "You mean the world to me. Happy 16th monthsary, my love! Here is to forever and always.", type: "surprise" as const },
+  { title: "Sweet Message", content: "You are the best thing that has ever happened to me. Every day with you feels like a dream I never want to wake up from. I love you more than words can ever express.", emoji: "\u2764\uFE0F" },
+  { title: "Favorite Picture", content: "Our favorite memory together", emoji: "\uD83D\uDCF7" },
+  { title: "Voice Message", content: "A special voice message just for you", emoji: "\uD83C\uDFA4" },
+  { title: "Secret Surprise", content: "You mean the world to me. Happy 16th monthsary, my love! Here is to forever and always.", emoji: "\uD83C\uDF89" },
 ];
 
 interface SecretEnvelopesProps {
@@ -22,13 +21,24 @@ export default function SecretEnvelopes({ onNext, onPrev }: SecretEnvelopesProps
     >
       <div className="max-w-3xl w-full scrapbook-paper rounded-lg p-6 sm:p-10">
         <h2 className="handwritten-serif text-3xl sm:text-4xl text-rose text-center mb-2" style={{ fontFamily: "var(--font-dancing)" }}>
-          Secret Envelopes
+          Secret Messages
         </h2>
-        <p className="handwritten text-brown text-center mb-6" style={{ fontFamily: "var(--font-caveat)" }}>Tap each envelope to reveal a surprise</p>
+        <p className="handwritten text-brown text-center mb-6" style={{ fontFamily: "var(--font-caveat)" }}>Little messages from my heart to yours</p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {envelopes.map((env, i) => (
-            <Envelope key={i} title={env.title} content={env.content} type={env.type} index={i} />
+            <motion.div key={i}
+              className="rounded-sm p-4 border-2"
+              style={{ borderColor: "#D6B36A", background: "#FFFDF9", borderStyle: "dashed" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <div className="text-2xl mb-2 text-center">{env.emoji}</div>
+              <h3 className="handwritten text-lg text-rose text-center" style={{ fontFamily: "var(--font-caveat)" }}>{env.title}</h3>
+              <div className="heart-divider my-2" />
+              <p className="handwritten text-brown text-center text-sm" style={{ fontFamily: "var(--font-caveat)" }}>{env.content}</p>
+            </motion.div>
           ))}
         </div>
 

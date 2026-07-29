@@ -8,24 +8,27 @@ import OurStory from './pages/OurStory';
 import MemoryWall from './pages/MemoryWall';
 import LittleThings from './pages/LittleThings';
 import FavoriteMoments from './pages/FavoriteMoments';
+import Proposal from './pages/Proposal';
+import DateCalendar from './pages/DateCalendar';
+import DateType from './pages/DateType';
 import LoveCoupons from './pages/LoveCoupons';
-import DatePlanner from './pages/DatePlanner';
-import SecretEnvelopes from './pages/SecretEnvelopes';
 import CountdownPage from './pages/CountdownPage';
 import FinalLetter from './pages/FinalLetter';
-import Proposal from './pages/Proposal';
+import SecretEnvelopes from './pages/SecretEnvelopes';
 import FinalScreen from './pages/FinalScreen';
 import MusicPlayer from './shared/MusicPlayer';
 import FloatingPetals from './shared/FloatingPetals';
 import FloatingHearts from './shared/FloatingHearts';
 import LoadingScreen from './shared/LoadingScreen';
 
-const TOTAL_PAGES = 13;
+const TOTAL_PAGES = 14;
 
 export default function Scrapbook() {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [direction, setDirection] = useState(0);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedDateType, setSelectedDateType] = useState<{ title: string; emoji: string; description: string } | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -78,13 +81,14 @@ export default function Scrapbook() {
       case 3: return <MemoryWall onNext={handleNext} onPrev={handlePrev} />;
       case 4: return <LittleThings onNext={handleNext} onPrev={handlePrev} />;
       case 5: return <FavoriteMoments onNext={handleNext} onPrev={handlePrev} />;
-      case 6: return <LoveCoupons onNext={handleNext} onPrev={handlePrev} />;
-      case 7: return <DatePlanner onNext={handleNext} onPrev={handlePrev} />;
-      case 8: return <SecretEnvelopes onNext={handleNext} onPrev={handlePrev} />;
-      case 9: return <CountdownPage onNext={handleNext} onPrev={handlePrev} />;
-      case 10: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
-      case 11: return <Proposal onNext={handleNext} onPrev={handlePrev} />;
-      case 12: return <FinalScreen onPrev={handlePrev} />;
+      case 6: return <Proposal onNext={handleNext} onPrev={handlePrev} />;
+      case 7: return <DateCalendar onNext={(date) => { setSelectedDate(date); handleNext(); }} onPrev={handlePrev} />;
+      case 8: return <DateType onNext={(type) => { setSelectedDateType(type); handleNext(); }} onPrev={handlePrev} />;
+      case 9: return <LoveCoupons onNext={handleNext} onPrev={handlePrev} />;
+      case 10: return <CountdownPage onNext={handleNext} onPrev={handlePrev} />;
+      case 11: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
+      case 12: return <SecretEnvelopes onNext={handleNext} onPrev={handlePrev} />;
+      case 13: return <FinalScreen onPrev={handlePrev} selectedDate={selectedDate} selectedDateType={selectedDateType} />;
       default: return null;
     }
   };

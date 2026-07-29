@@ -4,9 +4,19 @@ import { motion } from 'framer-motion';
 
 interface FinalScreenProps {
   onPrev: () => void;
+  selectedDate: string | null;
+  selectedDateType: { title: string; emoji: string; description: string } | null;
 }
 
-export default function FinalScreen({ onPrev }: FinalScreenProps) {
+export default function FinalScreen({ onPrev, selectedDate, selectedDateType }: FinalScreenProps) {
+  const mailBody = encodeURIComponent(
+    `Our Monthsary Date Plans! 💖\n\n` +
+    (selectedDate ? `📅 Date: ${selectedDate}\n` : '') +
+    (selectedDateType ? `\n💕 Date Type: ${selectedDateType.emoji} ${selectedDateType.title}\n${selectedDateType.description}` : '') +
+    `\n\nCan't wait for our special day! 🎉`
+  );
+  const mailSubject = encodeURIComponent("Our Monthsary Date Plans! 💖");
+
   return (
     <motion.div className="min-h-screen flex items-center justify-center p-4 sm:p-8"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -31,6 +41,26 @@ export default function FinalScreen({ onPrev }: FinalScreenProps) {
           <p className="handwritten text-lg text-brown mb-6" style={{ fontFamily: "var(--font-caveat)" }}>
             The next page is waiting for us to write it together.
           </p>
+
+          {(selectedDate || selectedDateType) && (
+            <motion.div className="mb-6 p-4 rounded-sm"
+              style={{ background: "rgba(248, 200, 220, 0.2)", border: "1px dashed #D96C8A" }}
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1 }}
+            >
+              <h3 className="handwritten-serif text-xl text-rose mb-3" style={{ fontFamily: "var(--font-dancing)" }}>Our Date Plans</h3>
+              {selectedDate && (
+                <p className="handwritten text-base text-dark-text" style={{ fontFamily: "var(--font-caveat)" }}>
+                  &#x1F4C5; {selectedDate}
+                </p>
+              )}
+              {selectedDateType && (
+                <p className="handwritten text-base text-dark-text mt-1" style={{ fontFamily: "var(--font-caveat)" }}>
+                  {selectedDateType.emoji} {selectedDateType.title}
+                </p>
+              )}
+            </motion.div>
+          )}
+
           <p className="handwritten-serif text-xl text-accent mb-6" style={{ fontFamily: "var(--font-dancing)" }}>
             Happy 16th Monthsary
           </p>
@@ -40,13 +70,15 @@ export default function FinalScreen({ onPrev }: FinalScreenProps) {
         </motion.div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <motion.button className="px-6 py-3 rounded-full text-white handwritten text-lg"
+          <motion.a
+            href={`mailto:earljohngomez66@gmail.com?subject=${mailSubject}&body=${mailBody}`}
+            className="px-6 py-3 rounded-full text-white handwritten text-lg inline-block"
             style={{ background: "linear-gradient(135deg, #D96C8A, #B54B6A)" }}
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
           >
             See Our Date Details
-          </motion.button>
+          </motion.a>
           <motion.button className="px-6 py-3 rounded-full border-2 text-brown handwritten text-lg"
             style={{ borderColor: "#D6B36A" }}
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
