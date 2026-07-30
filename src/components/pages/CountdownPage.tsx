@@ -32,9 +32,6 @@ export default function CountdownPage({ onNext, onPrev }: CountdownPageProps) {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
     >
       <div className="max-w-lg w-full scrapbook-paper rounded-lg p-6 sm:p-10 text-center">
-        <h2 className="handwritten-serif text-3xl sm:text-4xl text-rose mb-4" style={{ fontFamily: "var(--font-dancing)" }}>
-          Our Journey So Far
-        </h2>
         <p className="handwritten text-brown mb-8" style={{ fontFamily: "var(--font-caveat)" }}>Every second with you has been worth it.</p>
 
         <div className="grid grid-cols-4 gap-3 mb-8">
