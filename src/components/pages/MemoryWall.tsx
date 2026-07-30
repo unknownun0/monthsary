@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const memories = [
-  { title: "Rides Date", image: "/love/IMG_3352.HEIC", caption: "Our rides adventure together" },
-  { title: "Random Date", image: "/love/IMG_0314.HEIC", caption: "Just us being us" },
-  { title: "Gym Date", image: "/love/IMG_4203.HEIC", caption: "Getting strong together" },
-  { title: "Night Out", image: "/love/IMG_5311.HEIC", caption: "Dancing the night away" },
-  { title: "Flower Stickers", image: "/love/KAPI_SF2603071235552299931.jpg", caption: "You make my world bloom" },
+  { title: "Rides Date", image: "/love/IMG_3337.jpeg", caption: "Our rides adventure together" },
+  { title: "Random Date", image: "/love/IMG_0314.jpeg", caption: "Just us being us" },
+  { title: "Gym Date", image: "/love/IMG_0193.jpeg", caption: "Getting strong together" },
+  { title: "Night Out", image: "/love/IMG_5311.jpeg", caption: "Mga biglang aya mag kape" },
+  { title: "Flower for you", image: "/love/KAPI_SF2603071235552299931.jpg", caption: "Sweet na may away date with flowers pa HAHAHAH" },
 ];
 
 const rotations = [-2, 3, -1, 2, -3];

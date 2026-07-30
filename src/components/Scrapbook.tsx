@@ -7,21 +7,18 @@ import WelcomeLetter from './pages/WelcomeLetter';
 import OurStory from './pages/OurStory';
 import MemoryWall from './pages/MemoryWall';
 import LittleThings from './pages/LittleThings';
-import FavoriteMoments from './pages/FavoriteMoments';
 import Proposal from './pages/Proposal';
 import DateCalendar from './pages/DateCalendar';
 import DateType from './pages/DateType';
-import LoveCoupons from './pages/LoveCoupons';
 import CountdownPage from './pages/CountdownPage';
 import FinalLetter from './pages/FinalLetter';
-import SecretEnvelopes from './pages/SecretEnvelopes';
 import FinalScreen from './pages/FinalScreen';
 import MusicPlayer from './shared/MusicPlayer';
 import FloatingPetals from './shared/FloatingPetals';
 import FloatingHearts from './shared/FloatingHearts';
 import LoadingScreen from './shared/LoadingScreen';
 
-const TOTAL_PAGES = 14;
+const TOTAL_PAGES = 11;
 
 export default function Scrapbook() {
   const [page, setPage] = useState(0);
@@ -80,15 +77,12 @@ export default function Scrapbook() {
       case 2: return <OurStory onNext={handleNext} onPrev={handlePrev} />;
       case 3: return <MemoryWall onNext={handleNext} onPrev={handlePrev} />;
       case 4: return <LittleThings onNext={handleNext} onPrev={handlePrev} />;
-      case 5: return <FavoriteMoments onNext={handleNext} onPrev={handlePrev} />;
-      case 6: return <Proposal onNext={handleNext} onPrev={handlePrev} />;
-      case 7: return <DateCalendar onNext={(date) => { setSelectedDate(date); handleNext(); }} onPrev={handlePrev} />;
-      case 8: return <DateType onNext={(type) => { setSelectedDateType(type); handleNext(); }} onPrev={handlePrev} />;
-      case 9: return <LoveCoupons onNext={handleNext} onPrev={handlePrev} />;
-      case 10: return <CountdownPage onNext={handleNext} onPrev={handlePrev} />;
-      case 11: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
-      case 12: return <SecretEnvelopes onNext={handleNext} onPrev={handlePrev} />;
-      case 13: return <FinalScreen onPrev={handlePrev} selectedDate={selectedDate} selectedDateType={selectedDateType} />;
+      case 5: return <Proposal onNext={handleNext} onPrev={handlePrev} />;
+      case 6: return <DateCalendar onNext={(date) => { setSelectedDate(date); handleNext(); }} onPrev={handlePrev} />;
+      case 7: return <DateType onNext={(type) => { setSelectedDateType(type); handleNext(); }} onPrev={handlePrev} />;
+      case 8: return <CountdownPage onNext={handleNext} onPrev={handlePrev} />;
+      case 9: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
+      case 10: return <FinalScreen onPrev={handlePrev} selectedDate={selectedDate} selectedDateType={selectedDateType} />;
       default: return null;
     }
   };

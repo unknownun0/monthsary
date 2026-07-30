@@ -5,11 +5,11 @@ import { useState } from 'react';
 import Polaroid from '../shared/Polaroid';
 
 const milestones = [
-  { title: "How We Met", image: "/love/IMG_2761.PNG", caption: "The day our story began..." },
-  { title: "First Date", image: "/love/IMG_3640.HEIC", caption: "Our first special moment together" },
+  { title: "Our first chat", image: "/love/IMG_2761.PNG", caption: "The day our story began..." },
+  { title: "Sweeties date ", image: "/love/KAPI_SF2603071235552299931.jpg", caption: "for me kahit may away pero masaya" },
   { title: "Favorite Monthsary", image: "/love/IMG_7618.JPG", caption: "Celebrating another month of us" },
-  { title: "Favorite Memory", image: "/love/Screenshot 2026-07-29 190633.png", caption: "A memory I will forever treasure" },
-  { title: "16 Months Together", image: "", caption: "And many more to come " + String.fromCharCode(0x2764) },
+  { title: "Favorite Memory", image: "/love/Screenshot 2026-07-29 190633.png", caption: "Kasi sobrang akong kinikilig sa react mo hahaha" },
+  { title: "16 Months Together", image: "/love/IMG_1432.jpeg", caption: "And many more to come " + String.fromCharCode(0x2764) },
 ];
 
 interface OurStoryProps {

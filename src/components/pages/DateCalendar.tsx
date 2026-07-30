@@ -5,6 +5,10 @@ import { useState } from 'react';
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const FIXED_YEAR = 2026;
+const FIXED_MONTH = 7; // August (0-based)
+const MIN_DAY = 2;
+const MAX_DAY = 10;
 
 interface DateCalendarProps {
   onNext: (date: string) => void;
@@ -12,25 +16,12 @@ interface DateCalendarProps {
 }
 
 export default function DateCalendar({ onNext, onPrev }: DateCalendarProps) {
-  const today = new Date();
-  const [year, setYear] = useState(today.getFullYear());
-  const [month, setMonth] = useState(today.getMonth());
+  const [year] = useState(FIXED_YEAR);
+  const [month] = useState(FIXED_MONTH);
   const [selected, setSelected] = useState<string | null>(null);
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  const prevMonth = () => {
-    if (month === 0) { setYear(y => y - 1); setMonth(11); }
-    else setMonth(m => m - 1);
-    setSelected(null);
-  };
-
-  const nextMonth = () => {
-    if (month === 11) { setYear(y => y + 1); setMonth(0); }
-    else setMonth(m => m + 1);
-    setSelected(null);
-  };
 
   const handleSelect = (day: number) => {
     const date = new Date(year, month, day);
@@ -48,14 +39,16 @@ export default function DateCalendar({ onNext, onPrev }: DateCalendarProps) {
         <p className="handwritten text-brown text-center mb-6" style={{ fontFamily: "var(--font-caveat)" }}>Choose when our special date happens</p>
 
         <div className="flex items-center justify-between mb-4">
-          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-            className="text-2xl text-brown px-2" onClick={prevMonth}>&larr;</motion.button>
+          <div className="w-8" />
           <span className="handwritten-serif text-xl text-dark-text" style={{ fontFamily: "var(--font-dancing)" }}>
             {MONTHS[month]} {year}
           </span>
-          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-            className="text-2xl text-brown px-2" onClick={nextMonth}>&rarr;</motion.button>
+          <div className="w-8" />
         </div>
+
+        <p className="handwritten text-center text-sm text-brown mb-4" style={{ fontFamily: "var(--font-caveat)" }}>
+          Available dates: August 2, 2026 through August 10, 2026 only
+        </p>
 
         <div className="grid grid-cols-7 gap-1 mb-2">
           {DAYS.map(d => (
@@ -69,17 +62,20 @@ export default function DateCalendar({ onNext, onPrev }: DateCalendarProps) {
           ))}
           {Array.from({ length: daysInMonth }, (_, i) => {
             const day = i + 1;
+            const isWithinRange = day >= MIN_DAY && day <= MAX_DAY;
             const isSelected = selected && new Date(year, month, day).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) === selected;
             return (
               <motion.button key={day}
                 className="rounded-full w-10 h-10 flex items-center justify-center handwritten text-base"
                 style={{
                   background: isSelected ? "#D96C8A" : "transparent",
-                  color: isSelected ? "#FFF" : "#5C4033",
+                  color: isSelected ? "#FFF" : isWithinRange ? "#5C4033" : "rgba(92, 64, 51, 0.25)",
+                  cursor: isWithinRange ? "pointer" : "not-allowed",
                 }}
-                whileHover={{ scale: 1.1, background: isSelected ? "#D96C8A" : "#F8C8DC" }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleSelect(day)}
+                whileHover={isWithinRange ? { scale: 1.1, background: isSelected ? "#D96C8A" : "#F8C8DC" } : undefined}
+                whileTap={isWithinRange ? { scale: 0.9 } : undefined}
+                onClick={() => isWithinRange && handleSelect(day)}
+                disabled={!isWithinRange}
               >
                 {day}
               </motion.button>

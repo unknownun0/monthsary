@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 import StickyNote from '../shared/StickyNote';
 
 const notes = [
-  { title: "Your Smile", message: "It lights up my entire world. Every time you smile, I fall in love all over again.", color: "#FFF8DC", rotate: -3 },
-  { title: "Your Laugh", message: "The most beautiful sound I have ever heard. I could listen to it forever.", color: "#FFE4E1", rotate: 2 },
+  { title: "Your Smile", message: "Ang saya makita na lagi kang nakangiti sobrang saya ko basta masaya ka.", color: "#FFF8DC", rotate: -3 },
+  { title: "Your Laugh", message: " most beautiful things naririnig ko umaanting ng puso ko shesh. I could listen to it forever.", color: "#FFE4E1", rotate: 2 },
   { title: "Your Kindness", message: "You have the purest heart. The way you care for others inspires me every day.", color: "#E8F5E9", rotate: -1 },
   { title: "Your Hugs", message: "The safest place in the world. Your hugs make everything better.", color: "#E3F2FD", rotate: 4 },
-  { title: "Your Sleepy Voice", message: "That groggy morning voice is the cutest thing ever. It makes my heart melt.", color: "#FFF8DC", rotate: -2 },
-  { title: "Your Support", message: "You always believe in me even when I doubt myself. Thank you for being my biggest cheerleader.", color: "#F3E5F5", rotate: 3 },
-  { title: "Your Eyes", message: "I get lost in your eyes every single time. They tell a thousand stories.", color: "#FFE4E1", rotate: -4 },
-  { title: "Your Love", message: "The greatest gift I have ever received. Loving you has been the best part of my life.", color: "#FFF8DC", rotate: 1 },
+  { title: "Your Mad mode", message: "Mga palagi mo pagalit sakin kasi masaway ako ikaw panay ka naman sita hahaha.", color: "#FFF8DC", rotate: -2 },
+  { title: "Your Taray mode", message: "Mga araw na urat na urat kana kasi sa sobrang kulit ko pasaway ko sayo nanay yarn.", color: "#F3E5F5", rotate: 3 },
+  { title: "Your Pikon mode", message: "Mga araw na sobra akong mapang asar pero ganon ko kasi i show pag mamahal ko sayo mwah.", color: "#FFE4E1", rotate: -4 },
+  { title: "Your Kupal mode", message: "Kahit na uurat ako masaya ako kasi kupal kapa sakin hehe.", color: "#FFF8DC", rotate: 1 },
 ];
 
 interface LittleThingsProps {

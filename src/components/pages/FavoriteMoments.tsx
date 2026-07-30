@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Polaroid from '../shared/Polaroid';
 
 const moments = [
-  { src: "/love/IMG_0193.HEIC", date: "2024", location: "Our Special Place", story: "A beautiful day spent together.", caption: "Every moment with you is magical" },
+  { src: "/love/IMG_3640.jpeg", date: "2024", location: "Our oldies date", story: "Random aya mo sakin kumain after gym dati.", caption: "Every moment with you is magical" },
   { src: "/love/IMG_0867.HEIC", date: "2024", location: "Date Night", story: "Another wonderful memory.", caption: "You make everything better" },
   { src: "/love/IMG_1432.HEIC", date: "2024", location: "Our Adventure", story: "Exploring life together.", caption: "With you, every day is an adventure" },
   { src: "/love/IMG_1903.HEIC", date: "2024", location: "Quality Time", story: "Just us, and that is all we need.", caption: "My favorite place is wherever you are" },
