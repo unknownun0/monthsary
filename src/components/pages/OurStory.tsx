@@ -9,7 +9,7 @@ const milestones = [
   { title: "Sweeties date ", image: "/love/KAPI_SF2603071235552299931.jpg", caption: "for me kahit may away pero masaya" },
   { title: "Favorite Monthsary", image: "/love/IMG_7618.JPG", caption: "Celebrating another month of us" },
   { title: "Favorite Memory", image: "/love/Screenshot 2026-07-29 190633.png", caption: "Kasi sobrang akong kinikilig sa react mo hahaha" },
-  { title: "16 Months Together", image: "/love/IMG_1432.jpeg", caption: "And many more to come " + String.fromCharCode(0x2764) },
+{ title: "16 Months Together", image: "/love/IMG_1432.jpg", caption: "And many more to come " + String.fromCharCode(0x2764) },
 ];
 
 interface OurStoryProps {
