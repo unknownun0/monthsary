@@ -10,7 +10,6 @@ import LittleThings from './pages/LittleThings';
 import Proposal from './pages/Proposal';
 import DateCalendar from './pages/DateCalendar';
 import DateType from './pages/DateType';
-import CountdownPage from './pages/CountdownPage';
 import FinalLetter from './pages/FinalLetter';
 import FinalScreen from './pages/FinalScreen';
 import MusicPlayer from './shared/MusicPlayer';
@@ -18,7 +17,7 @@ import FloatingPetals from './shared/FloatingPetals';
 import FloatingHearts from './shared/FloatingHearts';
 import LoadingScreen from './shared/LoadingScreen';
 
-const TOTAL_PAGES = 11;
+const TOTAL_PAGES = 10;
 
 export default function Scrapbook() {
   const [page, setPage] = useState(0);
@@ -80,9 +79,8 @@ export default function Scrapbook() {
       case 5: return <Proposal onNext={handleNext} onPrev={handlePrev} />;
       case 6: return <DateCalendar onNext={(date) => { setSelectedDate(date); handleNext(); }} onPrev={handlePrev} />;
       case 7: return <DateType onNext={(type) => { setSelectedDateType(type); handleNext(); }} onPrev={handlePrev} />;
-      case 8: return <CountdownPage onNext={handleNext} onPrev={handlePrev} />;
-      case 9: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
-      case 10: return <FinalScreen onPrev={handlePrev} selectedDate={selectedDate} selectedDateType={selectedDateType} />;
+      case 8: return <FinalLetter onNext={handleNext} onPrev={handlePrev} />;
+      case 9: return <FinalScreen onPrev={handlePrev} selectedDate={selectedDate} selectedDateType={selectedDateType} />;
       default: return null;
     }
   };
